@@ -6,4 +6,4 @@ In the algorithm, the input is structured as follows:
 
     Integer N: Represents the cardinality of each group.
 
-    For 2*N lines: For each person from 0 to N-1, input their list of preferences of size N.
+    For 2*N lines: For each person from 0 to 2*N-1, input their list of preferences of size N.
