@@ -38,7 +38,7 @@ int * dijkstra(vvi &graph, int i){
 
     int * minRoutes = makeArr(graph.size()); minRoutes[i] = 0;
     minHeap pq; pq.push({i, 0});
-    msk vis(0); 
+    msk vis(i); 
 
     while(!pq.empty()){
 
