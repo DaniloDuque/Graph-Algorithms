@@ -32,6 +32,8 @@ vp PrimEdges(vvi &graph, int start){
     pq.push({start, start, 0});
     while(!pq.empty()){
 
+        if(vis.count() == graph.size()) return MST; // if we visited all nodes, return MST
+
         edge curr = pq.top(); pq.pop();
         int node1 = get<0>(curr);
         int node2 = get<1>(curr);
@@ -61,8 +63,9 @@ int PrimWeight(vvi &graph, int start){
 
     while(!pq.empty()){
 
+        if(vis.count() == graph.size()) return MSTcost; // if we visited all nodes, return MSTcost
+
         edge curr = pq.top(); pq.pop();
-        int node1 = get<0>(curr);
         int node2 = get<1>(curr);
         int cost = get<2>(curr);
         
@@ -94,7 +97,6 @@ int main(){
 
         cin>>node1>>node2>>weight;
         graph[node1][node2] = weight;
-        graph[node2][node1] = weight; // hay que cambiar esto
 
     }
 
