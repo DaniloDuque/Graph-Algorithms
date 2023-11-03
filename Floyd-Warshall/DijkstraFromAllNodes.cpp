@@ -45,6 +45,8 @@ int * dijkstra(vvi &graph, int i){
         int curr = pq.top().first;
         pq.pop();  
         vis.set(curr); 
+
+        if(vis.count() == graph.size()) return minRoutes; // if we visited all nodes, return routes
         
         for(duo neigh: graph[curr])
 
