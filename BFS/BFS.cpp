@@ -1,15 +1,10 @@
-#include <iostream>
-#include <queue>
-#include <vector>
-#include <bitset>
+#include <bits/stdc++.h>
 using namespace std;
 
 bitset<100001> vis(0);
 queue<int> bfs;
 
 #define vvi vector<vector<int>>
-
-    
 
 
 void BFS(vvi &graph, int start){
@@ -41,7 +36,7 @@ void BFS(vvi &graph, int start){
 int main(){
 
     int A, C, K, x, y;
-    cin>>A>>C>>K;
+    cin>>A>>C>>K;   //A -> number of vertices   C -> number of edges     K -> start vertex
     vector<vector<int>> graph(A, vector<int>(0));
     
 
@@ -56,7 +51,4 @@ int main(){
     BFS(graph, K);
     return 0;
 }
-
-
-
 
