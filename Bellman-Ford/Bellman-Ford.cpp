@@ -29,7 +29,7 @@ int * infiniteCicles(vvi &graph, int * &minRoutes){
 
             for(duo edge: graph[u])
 
-                if(minRoutes[edge.first] > minRoutes[u] + edge.second) minRoutes[edge.first] = MINF;
+                if(minRoutes[edge.first] > minRoutes[u] + edge.second) minRoutes[edge.first] = MINF; //if there is change, then we find a infinite cycle
 
     return minRoutes;
 
@@ -63,11 +63,11 @@ int * BellmanFord(vvi &graph, int start){
 int main(){
 
     int n, m, node1, node2, weight;
-    cin>>n>>m;
+    cin>>n>>m;   // n->amount of vertices    m->amount of edges
     vvi graph(n);
     for(int i = 0; i<m; i++){
 
-        cin>>node1>>node2>>weight;
+        cin>>node1>>node2>>weight;  //from node1 to node2 with cost = weight
         graph[node1].push_back({node2, weight});
 
     }
