@@ -51,11 +51,11 @@ vector<int> dijkstra(vvi &graph, int i){
 int main(){
 
     int n, m, node1, node2, weight;
-    cin>>n>>m;
+    cin>>n>>m; // n -> amount of vertices    m -> amount of edges
     vvi graph(n);
     for(int i = 0; i<m; i++){
 
-        cin>>node1>>node2>>weight;
+        cin>>node1>>node2>>weight;   // node1 -> initial vertex   node2 -> final vertex    weight -> cost of going from node1 to node2
         graph[node1].push_back({node2, weight});
 
     }
