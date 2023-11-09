@@ -1,13 +1,9 @@
-#include <iostream>
-#include <tuple>
-#include <queue>
-#include <bitset>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define edge tuple<int, int, int>
 #define duo pair<int, int>
-#define vp vector<duo>
-#define vi vector<int>
+#define vi vector<duo>
 #define vvi vector<vi>
 #define minHeap priority_queue<edge, vector<edge>, compare>
 
@@ -25,14 +21,13 @@ struct compare{
 
 
 
-vp PrimEdges(vvi &graph, int start){
+vi PrimEdges(vvi &graph, int start){
 
-
-    minHeap pq; vp MST;
+    minHeap pq; vi MST;
     pq.push({start, start, 0});
+
     while(!pq.empty()){
 
-        if(vis.count() == graph.size()) return MST; // if we visited all nodes, return MST
 
         edge curr = pq.top(); pq.pop();
         int node1 = get<0>(curr);
@@ -43,9 +38,11 @@ vp PrimEdges(vvi &graph, int start){
         
             vis.set(node2);
             MST.push_back({node1, node2});
-            for(int i = 0; i<graph.size(); ++i)
+            if(vis.count() == graph.size()) return MST; // if we visited all nodes, return MST
 
-                if(graph[node2][i] != 1<<30) pq.push({node2, i, graph[node2][i]});
+            for(duo neigh: graph[node2])
+
+               pq.push({node2, neigh.first, neigh.second});
 
         }
         
@@ -63,7 +60,6 @@ int PrimWeight(vvi &graph, int start){
 
     while(!pq.empty()){
 
-        if(vis.count() == graph.size()) return MSTcost; // if we visited all nodes, return MSTcost
 
         edge curr = pq.top(); pq.pop();
         int node2 = get<1>(curr);
@@ -73,13 +69,15 @@ int PrimWeight(vvi &graph, int start){
         
             vis.set(node2);
             MSTcost += cost;
-            for(int i = 0; i<graph.size(); ++i)
+            if(vis.count() == graph.size()) return MSTcost; // if we visited all nodes, return MSTcost
 
-                if(graph[node2][i] != 1<<30) pq.push({node2, i, graph[node2][i]});
+            for(duo neigh: graph[node2])
+
+               pq.push({node2, neigh.first, neigh.second});
 
         }
         
-    }return MSTcost;
+    }return 1<<30;
 
 }
 
@@ -91,19 +89,19 @@ int PrimWeight(vvi &graph, int start){
 int main(){
 
     int n, m, node1, node2, weight;
-    cin>>n>>m;
-    vvi graph(n, vi(n, 1<<30));
+    cin>>n>>m; // n->amount of vertices     m->amount of edges
+    vvi graph(n);
     for(int i = 0; i<m; ++i){
 
-        cin>>node1>>node2>>weight;
-        graph[node1][node2] = weight;
+        cin>>node1>>node2>>weight;    // from node1 to node2 with cost = weight
+        graph[node1].push_back({node2, weight});
 
     }
 
+    for(duo k: PrimEdges(graph, 0)) cout<<'('<<k.first<<", "<<k.second<<")  ";
+    cout<<endl;
+
     return 0;
 }
-
-
-
 
 
