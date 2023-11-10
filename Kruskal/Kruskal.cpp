@@ -4,7 +4,6 @@ using namespace std;
 
 #define edge tuple<int, int, int>
 #define vi vector<int>
-#define vvi vector<vi>
 #define ve vector<edge>
 
 
@@ -27,7 +26,7 @@ int Find(int node, vi &DS){
 
 
 
-ve KruskalEdges(ve &Edges, vvi &graph, vi &DS, int start){
+ve KruskalEdges(ve &Edges, vi &DS, int start){
 
     ve MST;
     sort(Edges.begin(), Edges.end(), compareEdges);
@@ -54,7 +53,7 @@ ve KruskalEdges(ve &Edges, vvi &graph, vi &DS, int start){
 
 
 
-int KruskalCost(ve &Edges, vvi &graph, vi &DS, int start){
+int KruskalCost(ve &Edges, vi &DS, int start){
 
     sort(Edges.begin(), Edges.end(), compareEdges);
 
@@ -86,22 +85,19 @@ int main(){
 
     int n, m, node1, node2, cost;
     cin>>n>>m; // n->amount of vertices    m->amount of edges
-    ve Edges;
-    vvi graph(n, vector<int>(n, 1<<30));
+    ve Edges;   // vector of edges
     vi DS; for(int i = 0; i<n; i++) DS.push_back(i);
     
 
     for(int i = 0; i<m; i++){
 
         cin>>node1>>node2>>cost;   //the edge (node1, node2), has a cost = weight
-        graph[node1][node2] = cost;
-        graph[node2][node1] = cost;
         Edges.push_back({node1, node2, cost});
-        Edges.push_back({node2, node1, cost});
+        Edges.push_back({node2, node1, cost});  //undirected graph
 
     }
 
-    cout<<KruskalCost(Edges, graph, DS, 0)<<'\n';
+    cout<<KruskalCost(Edges, DS, 0)<<'\n';
 
     return 0;
 }
