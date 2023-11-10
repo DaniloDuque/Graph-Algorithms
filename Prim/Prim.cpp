@@ -23,7 +23,7 @@ struct compare{
 
 vi PrimEdges(vvi &graph, int start){
 
-    minHeap pq; vi MST;
+    minHeap pq; vi MST; int visits=1;
     pq.push({start, start, 0});
 
     while(!pq.empty()){
@@ -38,7 +38,7 @@ vi PrimEdges(vvi &graph, int start){
         
             vis.set(node2);
             MST.push_back({node1, node2});
-            if(vis.count() == graph.size()) return MST; // if we visited all nodes, return MST
+            if(++visits == graph.size()) return MST; // if we visited all nodes, return MST
 
             for(duo neigh: graph[node2])
 
@@ -55,7 +55,7 @@ vi PrimEdges(vvi &graph, int start){
 
 int PrimWeight(vvi &graph, int start){
 
-    minHeap pq; int MSTcost = 0;
+    minHeap pq; int MSTcost = 0; int visits=1;
     pq.push({start, start, 0});
 
     while(!pq.empty()){
@@ -69,7 +69,7 @@ int PrimWeight(vvi &graph, int start){
         
             vis.set(node2);
             MSTcost += cost;
-            if(vis.count() == graph.size()) return MSTcost; // if we visited all nodes, return MSTcost
+            if(++visits == graph.size()) return MSTcost; // if we visited all nodes, return MSTcost
 
             for(duo neigh: graph[node2])
 
