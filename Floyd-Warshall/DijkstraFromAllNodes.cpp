@@ -19,7 +19,7 @@ struct compare{
 
 vector<int> dijkstra(vvi &graph, int i){
 
-    memo.assign(graph.size(), 1<<30); memo[i] = 0;
+    memo.assign(graph.size(), 1<<30); memo[i] = 0; int visits=1;
     minHeap pq; pq.push(i);
     msk vis(0); 
 
@@ -29,7 +29,7 @@ vector<int> dijkstra(vvi &graph, int i){
         pq.pop();  
         vis.set(curr); 
 
-        if(vis.count() == graph.size()) return memo; // if we visited all nodes, return routes
+        if(++visits == graph.size()) return memo; // if we visited all nodes, return routes
         
         for(duo neigh: graph[curr])
 
