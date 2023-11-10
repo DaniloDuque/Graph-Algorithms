@@ -21,7 +21,7 @@ int * makeArr(int n, int start){
 
 
 
-int * infiniteCicles(vvi &graph, int * &minRoutes){
+int * infiniteCycles(vvi &graph, int * &minRoutes){
 
     for(int i = 0; i<graph.size()-1; ++i)
 
@@ -52,7 +52,7 @@ int * BellmanFord(vvi &graph, int start){
 
                     minRoutes[edge.first] = minRoutes[u] + edge.second;
 
-    return infiniteCicles(graph, minRoutes);
+    return infiniteCycles(graph, minRoutes);
 
 }
 
