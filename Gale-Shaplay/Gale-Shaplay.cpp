@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <bitset>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define vi vector<int>
@@ -8,7 +6,7 @@ using namespace std;
 
 
 
-bitset<100001> isFree(0);
+bitset<10000> isFree(0);
 
 
 
@@ -33,10 +31,10 @@ vi GaleShaplay(vvi &mat){
     int size = mat.size()>>1;
     vi partnerW(size, -1);
     for(int i = 0; i<size; i++) isFree.set(i);
+    int numFreeMan = size;
 
 
-    while(isFree.count()){
-
+    while(numFreeMan){
 
         int freeMan = isFree._Find_first();
 
@@ -47,7 +45,8 @@ vi GaleShaplay(vvi &mat){
             if(partnerW[preferedW - size] == -1){  //preferedW is free, so engage her with our freeMan
 
                 partnerW[preferedW - size] = freeMan;
-                isFree.flip(freeMan);
+                isFree.reset(freeMan); numFreeMan--;
+
                 
             }else{
 
@@ -57,7 +56,7 @@ vi GaleShaplay(vvi &mat){
                 if(prefers(mat, preferedW, freeMan, comp)){
 
                     partnerW[preferedW - size] = freeMan;
-                    isFree.flip(freeMan);
+                    isFree.reset(freeMan);
                     isFree.set(comp);
 
                 }
