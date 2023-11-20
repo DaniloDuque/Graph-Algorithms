@@ -57,13 +57,14 @@ void dijkstra(vvi &graph, int start, int end){
 
 
 
-//This constructs the shortest path from start to end
-vi shortestPath(int start, int end){
+//This constructs the shortest path from start to end using a stack
+stack<int> shortestPath(int start, int end){
 
-    vi shortP;
+    stack<int> shortP;
+    if(prevVertex[end] == -1) return {};
     while(end != start){
 
-        shortP.insert(shortP.begin(), end);
+        shortP.push(end);
         end = prevVertex[end];
 
     }return shortP;
@@ -89,9 +90,14 @@ int main(){
 
     
     dijkstra(graph, 0, 4);  // 0->start node   4->end node
-    vi shortP = shortestPath(0, 4);
-    for(int i: shortP) cout<<i<<" ";
-    cout<<'\n';
+    stack<int> shortP = shortestPath(0, 4);
+    while(!shortP.empty()){
+
+        cout<<shortP.top()<<" ";
+        shortP.pop();
+
+    }cout<<'\n';
+    return 0;
 
 }
 
