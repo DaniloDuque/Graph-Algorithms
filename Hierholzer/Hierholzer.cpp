@@ -37,7 +37,7 @@ bool hasEulerianPath(int size, vi &in_Deg, vi &out_Deg){
 
         else if(in_Deg[i] - out_Deg[i] == 1) endV++;    //if in > out, then we found a possible end vertex;
 
-    }return (!strtV && !endV) || (strtV == 1 && endV == 1);  //if there is one end vertex, then there has to be one and only one start vertex
+    }return (!strtV && !endV) || (strtV == endV == 1);  //if there is one end vertex, then there has to be one and only one start vertex
 
 }
 
