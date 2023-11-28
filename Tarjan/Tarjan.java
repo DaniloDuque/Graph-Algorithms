@@ -1,3 +1,4 @@
+//This algorithm find the number of strongly conected components in a graph, but can be modified to find bridges and articulation points
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
