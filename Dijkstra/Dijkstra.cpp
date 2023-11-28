@@ -21,7 +21,7 @@ struct compare{
 
 vector<int> dijkstra(vvi &graph, int i){
 
-    memo.assign(graph.size(), 1<<30); memo[i] = 0; int visits=1;
+    memo.assign(graph.size(), 1<<30); memo[i] = 0; int visits=0;
     minHeap pq; pq.push(i);
     msk vis(0); 
     
