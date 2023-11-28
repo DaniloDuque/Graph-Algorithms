@@ -1,3 +1,4 @@
+//This algorithm find the number of strongly conected components in a graph, but can be modified to find bridges and articulation points
 #include <bits/stdc++.h>
 using namespace std;
 
