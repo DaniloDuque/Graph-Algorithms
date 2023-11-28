@@ -1,43 +1,101 @@
 # Graph Algorithms Repository
 
-Welcome to the Graph Algorithms Repository! This repository contains implementations and explanations of various graph algorithms commonly used in computer science and related fields. Whether you're a student learning about graph theory or a developer seeking efficient solutions for graph-related problems, this repository provides comprehensive resources for understanding and applying these algorithms.
+Welcome to my repository of graph algorithms implemented in C++ and Java. Whether you're an ICPC team member or a programming enthusiast, this collection is tailored to provide efficient and well-documented implementations of essential graph algorithms.
 
-## Algorithms Included
+## Introduction to Graphs
 
-### Classic Graph Traversal Algorithms
-- **Breadth-First Search (BFS):** Explore a graph level by level, finding the shortest path in an unweighted graph.
-- **Depth-First Search (DFS):** Explore a graph as deeply as possible along each branch before backtracking.
+Graphs, in the realm of discrete mathematics, are a fundamental data structure that consists of nodes (vertices) and edges connecting these nodes. The edges can be directed or undirected, and they represent relationships or connections between entities. Mathematically, a graph G is defined as a pair (V, E), where V is a set of vertices and E is a set of edges, each connecting a pair of vertices.
 
-### Shortest Path Algorithms
-- **Dijkstra's Algorithm:** Find the shortest paths from a source node to all other nodes in a weighted graph.
-- **Bellman-Ford Algorithm:** Find the shortest paths from a source node to all other nodes, handling negative-weight edges and detecting negative cycles.
-- **Floyd-Warshall Algorithm:** Compute the shortest paths between all pairs of nodes in a weighted graph.
+### Types of Graphs
 
-### Strongly Connected Components and Topological Sorting
-- **Tarjan's Algorithm:** Find strongly connected components in a directed graph and detect articulation points and bridges.
-- **Topological Sort:** Order the vertices of a directed acyclic graph in such a way that for every directed edge u → v, vertex u comes before v.
+- **Directed Graph (Digraph):** Edges have a direction.
+- **Undirected Graph:** Edges are bidirectional.
+- **Weighted Graph:** Edges have associated weights.
+- **Bipartite Graph:** Vertices can be divided into two sets with edges only between sets.
+- **Flow Graph:** A specialized directed graph where edges have capacities, representing the maximum amount of flow that can traverse the edge.
 
-### Maximum Flow and Bipartite Graphs
-- **Ford-Fulkerson Algorithm:** Find the maximum flow in a flow network.
-- **Edmonds-Karp Algorithm:** A specific implementation of the Ford-Fulkerson method that uses BFS for path search.
-- **Bipartite Graph Coloring:** Determine if a graph is bipartite (can be colored using two colors without any adjacent vertices having the same color).
+### Why Graphs in Computer Science?
+Graphs model real-world relationships and dependencies, making them indispensable in various computer science applications. They are used in social network analysis, route planning, dependency resolution, and more.
 
-### Minimum Spanning Trees
-- **Kruskal's Algorithm:** Find a minimum spanning tree for a connected, undirected graph.
-- **Prim's Algorithm:** Find a minimum spanning tree for a connected, undirected graph, adding vertices and edges incrementally.
+## Algorithms
 
-### Game Theory
-- **Gale-Shapley Algorithm:** Solve the stable marriage problem and find stable matchings between two sets of elements.
+Explore our collection of graph algorithms, each implemented in both C++ and Java. The implementations are designed to be efficient for competitive programming environments in C++, providing clear and concise representations of the algorithms in Java.
 
-### Disjoint-Set Data Structure
-- **Union-Find Algorithm:** Efficiently manage a partition of elements into disjoint subsets and perform union and find operations.
+### BFS (Breadth-First Search)
+- Traverse the graph level by level.
+- Explore all neighbors of a node before moving on.
+- **Time Complexity:** O(V + E), where V is the number of vertices and E is the number of edges.
 
-## How to Use This Repository
+### Bellman-Ford
+- Single-source shortest path algorithm.
+- Handles graphs with negative edge weights.
+- **Time Complexity:** O(V * E), where V is the number of vertices and E is the number of edges.
 
-Each algorithm includes detailed explanations of its concepts, and potential use cases. Feel free to explore the directories, find the algorithm you're interested in, and dive into the code and explanations provided.
+### Bipartite Graph Coloring
+- Determines if a graph is bipartite.
+- Vertices can be divided into two sets with no adjacent vertices in the same set.
+- **Time Complexity:** O(V + E), where V is the number of vertices and E is the number of edges.
 
-## Contribution Guidelines
+### DFS (Depth-First Search)
+- Explores a graph by going as deep as possible before backtracking.
+- Commonly used for topological sorting and finding connected components.
+- **Time Complexity:** O(V + E), where V is the number of vertices and E is the number of edges.
 
-Contributions to this repository are welcome! If you have improvements, additional algorithms, or useful explanations to add, please create a pull request. Let's make this repository a valuable resource for everyone interested in graph algorithms.
+### Dijkstra
+- Finds the shortest path from a source node to all other nodes in a weighted graph.
+- **Time Complexity:** O((V + E) * log V), where V is the number of vertices and E is the number of edges.
 
-Happy coding and exploring the world of graph algorithms! 🚀
+### Edmonds-Karp
+- Solves the maximum flow problem in a flow network using the Ford-Fulkerson algorithm.
+- **Time Complexity:** O(VE^2), where V is the number of vertices and E is the number of edges.
+
+### Floyd-Warshall
+- Finds the shortest paths between all pairs of vertices in a weighted graph.
+- **Time Complexity:** O(V^3), where V is the number of vertices.
+
+### Ford-Fulkerson
+- Generic algorithm for finding the maximum flow in a flow network.
+- **Time Complexity:** O(E * max_flow), where E is the number of edges.
+
+### Gale-Shapley
+- Solves the stable marriage problem, finding a stable matching between two sets of elements.
+- **Time Complexity:** O(m^2 * n), where m is the number of elements on one side and n is the number on the other.
+
+### Hierholzer
+- Finds an Eulerian cycle in a graph, visiting each edge exactly once.
+- **Time Complexity:** O(V + E), where V is the number of vertices and E is the number of edges.
+
+### Johnson
+- Finds all-pairs shortest paths in a graph, even with negative edge weights.
+- **Time Complexity:** O(V^2 * log V + VE), where V is the number of vertices and E is the number of edges.
+
+### Kruskal
+- Finds a minimum spanning tree for a connected, undirected graph.
+- **Time Complexity:** O(E * log V), where V is the number of vertices and E is the number of edges.
+
+### Prim
+- Finds a minimum spanning tree, growing it one edge at a time from an arbitrary node.
+- **Time Complexity:** O((V + E) * log V), where V is the number of vertices and E is the number of edges.
+
+### Tarjan
+- Efficiently finds strongly connected components in a directed graph.
+- **Time Complexity:** O(V + E), where V is the number of vertices and E is the number of edges.
+
+### Topological Sort
+- Orders the vertices of a directed acyclic graph (DAG) linearly based on dependencies.
+- **Time Complexity:** O(V + E), where V is the number of vertices and E is the number of edges.
+
+### Kahn's Algorithm
+- Another method for topological sorting, using a queue to iteratively select nodes with no incoming edges.
+- **Time Complexity:** O(V + E), where V is the number of vertices and E is the number of edges.
+
+### Union Find
+- Efficient data structure for tracking disjoint sets of elements.
+- Determines whether two elements belong to the same set.
+- **Time Complexity:** O(alpha(V)), where alpha(V) is the inverse Ackermann function and grows extremely slowly.
+
+## Usage
+
+Feel free to explore each algorithm's implementation within the repository to enhance your understanding and problem-solving skills. If you have any questions or suggestions, don´t hesitate to contribute, let's make this repository a comprehensive reference for ICPC teams and programmers alike. Happy coding! 🚀
+
+
