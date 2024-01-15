@@ -26,7 +26,7 @@ int Find(int node, vi &DS){
 
 
 
-ve KruskalEdges(ve &Edges, vi &DS, int start){
+ve KruskalEdges(ve &Edges, vi &DS){
 
     ve MST;
     sort(Edges.begin(), Edges.end(), compareEdges);
@@ -53,7 +53,7 @@ ve KruskalEdges(ve &Edges, vi &DS, int start){
 
 
 
-int KruskalCost(ve &Edges, vi &DS, int start){
+int KruskalCost(ve &Edges, vi &DS){
 
     sort(Edges.begin(), Edges.end(), compareEdges);
 
@@ -97,7 +97,7 @@ int main(){
 
     }
 
-    cout<<KruskalCost(Edges, DS, 0)<<'\n';
+    cout<<KruskalCost(Edges, DS)<<'\n';
 
     return 0;
 }
