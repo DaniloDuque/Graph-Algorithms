@@ -34,7 +34,7 @@ bool existsPath(vvi &graph, vi &prevVertex, int curr, int sink){
 
 
 
-int maxFlow(vvi &graph, int source, int sink){
+int maxFlow(vvi &graph, vvi& flowGraph, int source, int sink){
     
     int MaxFlow = 0;
     vi prevVertex(graph.size(), -1);
@@ -49,11 +49,12 @@ int maxFlow(vvi &graph, int source, int sink){
 
         for(int v = sink; v != source; v = prevVertex[v]){   //augment the path
 
+            flowGraph[prevVertex[v]][v] += pathMinFlow;
+            flowGraph[v][prevVertex[v]] -= pathMinFlow;
             graph[prevVertex[v]][v] -= pathMinFlow;
             graph[v][prevVertex[v]] += pathMinFlow;
 
         }MaxFlow += pathMinFlow;
-        prevVertex.assign(graph.size(), -1);
         vis.reset();
 
     }return MaxFlow;
@@ -70,12 +71,13 @@ int main(){
     int n, m, v1, v2, source, sink, flow; 
     cin>>n>>m>>source>>sink; // n->amount of vertices   m->amount of edges
     vvi graph(n, vi(n, 0));
+    vvi flowGraph(n, vi(n, 0));
     for(int i = 0; i<m; i++){
 
         cin>>v1>>v2>>flow;   //from v1 to v2 has flow as maximum flow
         graph[v1][v2] = flow;
 
-    }cout<<maxFlow(graph, source, sink)<<'\n';
+    }cout<<maxFlow(graph, flowGraph, source, sink)<<'\n';
     return 0;
 
 }
